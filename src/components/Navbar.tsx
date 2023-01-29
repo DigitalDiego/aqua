@@ -35,7 +35,7 @@ export default function Navbar() {
       >
         Aqua
       </a>
-      <nav className="flex items-center gap-[2em]">
+      <nav className="lg:flex items-center gap-[2em] hidden">
         {["Home", "Tours", "Services", "Contact"].map((item, index) => (
           <a
             className={cn(
@@ -57,9 +57,26 @@ export default function Navbar() {
           Book a trip
         </button>
       </nav>
-      <button className="hidden" onClick={handleNavBtn}>
+      <button className="text-lg lg:hidden" onClick={handleNavBtn}>
         {navBtn ? <AiOutlinePlus className="rotate-45" /> : <AiOutlineMenu />}
       </button>
+      <div
+        className={cn(
+          "fixed bottom-0 w-full h-[90vh] flex justify-evenly items-center flex-col bg-white duration-[.8s] right-0 rounded-tr-xl rounded-tl-xl lg:hidden",
+          navBtn ? "translate-y-0" : "translate-y-[100%]"
+        )}
+      >
+        {["Home", "Tours", "Services", "Contact"].map((item, index) => (
+          <a
+            className="text-black text-2xl hover:underline underline-offset-2"
+            href="#"
+            key={index}
+            onClick={handleNavBtn}
+          >
+            {item}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
